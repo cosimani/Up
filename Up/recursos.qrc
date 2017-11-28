@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fuentes/album-avantquelombre.ttf</file>
+        <file>fuentes/angelina.TTF</file>
+        <file>fuentes/Bethhrg_.ttf</file>
+        <file>fuentes/Complete in Him.ttf</file>
+        <file>fuentes/laurencb-demo.ttf</file>
+        <file>fuentes/RobotoCondensed-Bold.ttf</file>
+        <file>fuentes/RobotoCondensed-Light.ttf</file>
+        <file>fuentes/RobotoCondensed-Regular.ttf</file>
+        <file>fuentes/SERERG__.TTF</file>
+        <file>fuentes/SimpleLife.ttf</file>
+        <file>images/background3.jpg</file>
+        <file>images/icono_up.png</file>
+    </qresource>
+</RCC>

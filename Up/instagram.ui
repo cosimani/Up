@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Instagram</class>
+ <widget class="QWidget" name="Instagram">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>522</width>
+    <height>380</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Instagram</string>
+  </property>
+  <widget class="WebView" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>319</x>
+     <y>10</y>
+     <width>191</width>
+     <height>351</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WebView</class>
+   <extends>QWidget</extends>
+   <header>webview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
