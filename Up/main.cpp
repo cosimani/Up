@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QRect>
 #include <QSharedMemory>
+#include <QScreen>
 
 #include "publicador.h"
 #include "instagram.h"
@@ -40,10 +41,24 @@ int main(int argc, char ** argv)  {
     }
     //---- END OF Check for another instance code snippet ----
 
+    int screenPrincipal = QApplication::desktop()->primaryScreen();
 
-    QRect screenres = QApplication::desktop()->screenGeometry(1/*screenNumber*/);
-    qDebug() << QPoint(screenres.x(), screenres.y());
-    qDebug() << screenres.width() << screenres.height();
+    qDebug() << "screenPrincipal" << screenPrincipal;
+
+    QList< QScreen * > listadoDeScreen = qApp->screens();
+
+    QScreen * s;
+    for ( int i=0 ; i<listadoDeScreen.size() ; i++ )  {
+        s = listadoDeScreen.at( i );
+        qDebug() << "Screen" << i << s->geometry();
+
+    }
+
+    if ( listadoDeScreen.size() == 2 &&
+         listadoDeScreen.at( 0 )->geometry().x() == listadoDeScreen.at( 1 )->geometry().x() )  {
+        qDebug() << "Las pantallas estan duplicadas. Debera separarlas en dos para poder proyectar";
+    }
+
 
 //    QNetworkProxy proxy;
 //    proxy.setType(QNetworkProxy::HttpProxy);

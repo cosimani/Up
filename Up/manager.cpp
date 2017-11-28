@@ -66,6 +66,7 @@ void Manager::mostrarProyector()  {
     else  {  // Aca cuando hay 2 monitores (o mas)
 
         qDebug() << "scene->windowHandle()->setScreen( qApp->screens()[ 1 ] )";
+
         // Estas tres lineas son necesarias para mostrarlo directamente en la segunda pantalla
 
 //        // Lo mostramos aca solo para que el metodo windowHandle() devuelva que esta activo y luego poder
@@ -85,13 +86,32 @@ void Manager::mostrarProyector()  {
 
         QList< QScreen * > listadoDeScreen = qApp->screens();
 
+        int screenPrincipal = QApplication::desktop()->primaryScreen();
+
+        qDebug() << "screenPrincipal" << screenPrincipal;
+        QWindowList listaWindows = qApp->topLevelWindows();
+
+        for ( int i=0 ; i<listaWindows.size() ; i++ )  {
+            qDebug() << "Window" << i << "=" << listaWindows.at( i )->isActive()
+                     << listaWindows.at( i )->isTopLevel() << listaWindows.at( i )->x()
+                     << listaWindows.at( i )->y() << listaWindows.at( i )->isVisible();
+        }
+
+
         QScreen * s;
         for ( int i=0 ; i<listadoDeScreen.size() ; i++ )  {
             s = listadoDeScreen.at( i );
             qDebug() << "Screen" << i << s->geometry();
+
         }
 
-        if ( listadoDeScreen.size() >= 2 )  {
+        if ( listadoDeScreen.size() == 2 &&
+             listadoDeScreen.at( 0 )->geometry().x() == listadoDeScreen.at( 1 )->geometry().x() )  {
+            qDebug() << "Las pantallas estan duplicadas. Debera separarlas en dos para poder proyectar";
+
+            scene->show();
+        }
+        else if ( listadoDeScreen.size() >= 2 )  {
             scene->move( listadoDeScreen.at( 1 )->geometry().x(), listadoDeScreen.at( 1 )->geometry().y() );
 
             scene->showFullScreen();

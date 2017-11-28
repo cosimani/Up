@@ -135,6 +135,11 @@ void ConfEvento::slot_aceptar()  {
 void ConfEvento::slot_cancelar()  {
     Comun::getInstance()->setHashTag( "" );
 
+    // Si se presiona cancelar y estamos en PROYETAR, entonces cerramos scene por las dudas que aun siga abierto
+    if ( Comun::getInstance()->getTipoEvento() == Comun::PROYECTAR )    {
+        Manager::getInstance()->detenerProyector();
+    }
+
     emit signal_cancelar();
 }
 
